@@ -1,29 +1,14 @@
-import SwiftUI
-
-struct MainTabView: View {
-    @Bindable var currentUser: User
-
-    var body: some View {
-        TabView {
-            ProfileView(user: currentUser)
-                .tabItem {
-                    Label("Профиль", systemImage: "person.circle")
-                }
-    
-            
-            // Можешь добавить другие табы здесь
-            ProductListView(currentUser: currentUser)
-                .tabItem {
-                    Label("Объявления", systemImage: "list.bullet")
-                }
-            
-            if (currentUser.correctedType == .buyer) {
-                CartView(currentUser: currentUser)
-                    .tabItem {
-                        Label("Корзина", systemImage: "cart")
-                    }
-            }
+TabView {
+    CourseListView()
+        .tabItem {
+            Label("Курсы", systemImage: "book.fill")
         }
-        .navigationBarBackButtonHidden(true)
-    }
+    CartView()
+        .tabItem {
+            Label("Корзина", systemImage: "cart.fill")
+        }
+    ProfileView()
+        .tabItem {
+            Label("Профиль", systemImage: "person.fill")
+        }
 }
