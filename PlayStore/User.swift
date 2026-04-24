@@ -2,18 +2,14 @@ import Foundation
 import SwiftData
 
 @Model
-class User {
+final class User {
     var email: String
     var password: String
-    var userType: String
+    var role: String // "student" or "author"
     
-    var correctedType: UserType {
-        UserType(rawValue: userType)!
-    }
-
-    init(email: String, password: String, userType: String) {
+    init(email: String, password: String, role: String = "student") {
         self.email = email
         self.password = password
-        self.userType = userType
+        self.role = role
     }
 }
