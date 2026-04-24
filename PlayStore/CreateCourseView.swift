@@ -1,8 +1,7 @@
 //
 //  CreateCourseView.swift
 //  CourseMarket
-//
-//  Created by Александр Бисеров on 22.04.2025.
+
 //
 
 import SwiftUI
