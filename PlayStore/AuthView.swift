@@ -7,8 +7,8 @@ enum AuthMode {
 }
 
 enum UserType: String, CaseIterable, Identifiable {
-    case seller = "Продавец"
-    case buyer = "Покупатель"
+    case student = "Студент"
+    case author = "Автор курсов"
 
     var id: String { rawValue }
 }
@@ -22,14 +22,14 @@ struct AuthView: View {
     @State private var authMode: AuthMode = .login
     @State private var email: String = ""
     @State private var password: String = ""
-    @State private var selectedUserType: UserType = .buyer
+    @State private var selectedUserType: UserType = .student
     @State private var isLoading: Bool = false
     @State private var showAlert: Bool = false
     @State private var alertMessage: String = ""
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("PlayStore")
+            Text("CourseMarket")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 50)
@@ -89,14 +89,12 @@ struct AuthView: View {
         isLoading = true
 
         Task {
-//            try? await Task.sleep(nanoseconds: 1_000_000_000)
-
             if authMode == .register {
                 if users.contains(where: { $0.email.lowercased() == email.lowercased() }) {
                     alertMessage = "Пользователь с таким email уже существует."
                     showAlert = true
                 } else {
-                    let newUser = User(email: email, password: password, userType: selectedUserType.rawValue)
+                    let newUser = User(email: email, password: password, role: selectedUserType == .student ? "student" : "author")
                     modelContext.insert(newUser)
                     onAuthSuccess(newUser)
                 }
