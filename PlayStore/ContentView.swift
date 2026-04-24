@@ -1,8 +1,7 @@
 //
 //  ContentView.swift
-//  PlayStore
-//
-//  Created by Александр Бисеров on 22.04.2025.
+//  CourseMarket
+
 //
 
 import SwiftUI
@@ -45,7 +44,8 @@ struct ContentView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Course.self, inMemory: true)
 }
