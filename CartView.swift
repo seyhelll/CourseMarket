@@ -65,7 +65,6 @@ struct CartView: View {
             .navigationTitle("Корзина")
         }
     }
-    
     // Функция для симуляции оплаты
     private func processPayment() {
         // Начинаем процесс оплаты
